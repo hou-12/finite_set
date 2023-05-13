@@ -1,8 +1,8 @@
-# distutils: sources = arithmetic/c-arithmetic/src/numeric/arithmetic.c arithmetic/c-arithmetic/src/numeric/gcd.c
-# distutils: include_dirs = arithmetic/c-arithmetic/src/numeric
+# distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c
+# distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
 # distutils: extra_compile_args = -O3
 
-cimport finite_set.c_inversion-list
+cimport finite_set.c_inversion_list
 
 class IntegerSet(AbstractSet[int]):
     def __init__(
