@@ -1,12 +1,12 @@
 cdef extern from "inversion-list.h":
 
-    ctypedef struct _InversionList InversionList:
+    ctypedef struct InversionList:
         pass
 
-    ctypedef struct _InversionListIterator InversionListIterator:
+    ctypedef struct InversionListIterator:
         pass
 
-    ctypedef struct _InversionListCoupleIterator InversionListCoupleIterator:
+    ctypedef struct InversionListCoupleIterator:
         pass
 
     bint inversion_list_init(void)
