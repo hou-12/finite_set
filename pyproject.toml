@@ -13,7 +13,7 @@
     authors = ["Groupe H"]
     license = ""
     readme = "README.rst"
-    packages = [{ include = "finite-set" }]
+    packages = [{ include = "finite_set" }]
     exclude = [
         "inversion_list/**/*.so",
         "inversion_list/**/*.pxd",
