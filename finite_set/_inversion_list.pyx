@@ -6,7 +6,7 @@ from collections.abc import AbstractSet
 
 import finite_set.inversion_list as fi
 
-cimport fi
+cimport finite_set.inversion_list
 
 cdef _finish():
     fi.inversion_list_finish()
@@ -55,18 +55,18 @@ class IntegerSet(AbstractSet[int]):
                                   
     def __iter__(self) -> Iterator[int]: 
         res = []
-        fi.IteratorList *iterator = fi.list_iterator_create(self._set);
-        while (fi.inversion_list_iterator_valid(iterator)):
-            res.append(fi.inversion_list_iterator_get(iterator))
-            iterator = fi.inversion_list_iterator_next(iterator)
+        fi.IteratorList *_iterator = fi.list_iterator_create(self._set);
+        while (fi.inversion_list_iterator_valid(self._iterator)):
+            res.append(fi.inversion_list_iterator_get(self._iterator))
+            iterator = fi.inversion_list_iterator_next(self._iterator)
         return res
                                   
     def intervals(self) -> Iterator[Tuple[int, int]]: 
         res = []
-        fi.IteratorCoupleList *iterator = fi.list_couple_iterator_create(self._set);
-        while (fi.inversion_list_couple_iterator_valid(iterator)):
-            res.append((fi.inversion_list_couple_iterator_inf(iterator), fi.inversion_list_couple_iterator_sup(iterator)))
-            iterator = fi.inversion_list_couple_iterator_next(iterator)
+        fi.IteratorCoupleList *_iterator = fi.list_couple_iterator_create(self._set);
+        while (fi.inversion_list_couple_iterator_valid(self._iterator)):
+            res.append((fi.inversion_list_couple_iterator_inf(self._iterator), fi.inversion_list_couple_iterator_sup(self._iterator)))
+            self._ = fi.inversion_list_couple_iterator_next(self._iterator)
         return res
                                   
     def ranges(self) -> Iterator[range]:
