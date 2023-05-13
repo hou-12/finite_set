@@ -1,4 +1,5 @@
 [submodule "finite_set/c-inversion-list"]
 	path = finite_set/c-inversion-list
-	url = https://github.com/hou-12/c-inversion-lis
+	url = https://github.com/hou-12/c-inversion-list
+
 	
