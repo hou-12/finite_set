@@ -1,4 +1,4 @@
-Install the **py-arithmetic** package
+Install the **finite-set** package
 =====================================
 
 |cmake| |Documentation Status|
@@ -6,19 +6,19 @@ Install the **py-arithmetic** package
 Installation
 ------------
 
-Install *py-arithmetic* using the bash commands:
+Install *finite-set* using the bash commands:
 
 .. code-block:: shell-session
 
-    $ git clone https://github.com/chdemko/py-arithmetic.git
-    $ cd py-arithmetic
+    $ git clone https://github.com/hou-12/finite-set.git
+    $ cd finite-set
     $ git submodule update --init --recursive
     $ poetry install --with docs
 
 Building
 --------
 
-Build *py-arithmetic* using the bash commands:
+Build *finite-set* using the bash commands:
 
 .. code-block:: shell-session
 
@@ -37,7 +37,7 @@ Build the documentation using the bash commands:
 Testing
 -------
 
-Test *py-arithmetic* using the bash commands:
+Test *finite-set* using the bash commands:
 
 .. code-block:: shell-session
 
@@ -46,7 +46,7 @@ Test *py-arithmetic* using the bash commands:
     $ poetry run tox -e linter
 
 
-.. |cmake| image:: https://github.com/chdemko/py-arithmetic/actions/workflows/python-package.yml/badge.svg
-   :target: https://github.com/chdemko/py-arithmetic/actions
-.. |Documentation Status| image:: https://img.shields.io/readthedocs/py-arithmetic.svg
-   :target: http://py-arithmetic.readthedocs.io/en/latest/?badge=latest
+.. |cmake| image:: https://github.com/hou-12/finite-set/actions/workflows/python-package.yml/badge.svg
+   :target: https://github.com/hou-12/finite-set/actions
+.. |Documentation Status| image:: https://img.shields.io/readthedocs/finite-set.svg
+   :target: http://finite-set.readthedocs.io/en/latest/?badge=latest
