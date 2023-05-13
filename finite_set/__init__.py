@@ -1,8 +1,8 @@
 """
-The arithmetic module.
+The finite-set module.
 """
 
 # pylint: disable=no-name-in-module
-from ._arithmetic import gcd, lcm
+from ._finite-set import IntegerSet
 
-__all__ = ("gcd", "lcm")
+__all__ = ("IntegerSet")
