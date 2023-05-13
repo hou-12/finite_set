@@ -16,7 +16,7 @@ _init()
 
 
 class IntegerSet(AbstractSet[int]):
-    cdef finite_set.IntegerSet *_set
+    finite_set.IntegerSet *_set
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
