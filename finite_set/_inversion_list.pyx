@@ -98,7 +98,7 @@ class IntegerSet(AbstractSet[int]):
           return IntergerSet(IntergerSet(fi.inversion_list_intersection(self._set, self._other)))
                                   
     def intersection(self, *others: Iterator[int]) -> "IntegerSet":
-          IntergerSet _iset = self._set
+          finite_set.IntergerSet _iset = self._set
           for i in others:
                 iset = IntegerSet(fi.inversion_list_intersection(self._iset, i))
           return self._iset
