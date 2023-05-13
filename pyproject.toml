@@ -15,17 +15,17 @@
     readme = "README.rst"
     packages = [{ include = "finite-set" }]
     exclude = [
-        "inversion-list/**/*.so",
-        "inversion-list/**/*.pxd",
-        "inversion-list/**/*.c",
-        "inversion-list/**/*.pyx",
-        "finite-set/c-inversion-list",
+        "inversion_list/**/*.so",
+        "inversion_list/**/*.pxd",
+        "inversion_list/**/*.c",
+        "inversion_list/**/*.pyx",
+        "finite_set/c_inversion_list",
     ]
     include = [
-        { path = "inversion-list/**/*.so", format = "wheel" },
-        { path = "inversion-list/**/*.pxd", format = "sdist" },
-        { path = "inversion-list/**/*.pyx", format = "sdist" },
-        { path = "finite-set/c-inversion-list/**/*", format = "sdist" },
+        { path = "inversion_list/**/*.so", format = "wheel" },
+        { path = "inversion_list/**/*.pxd", format = "sdist" },
+        { path = "inversion_list/**/*.pyx", format = "sdist" },
+        { path = "finite_set/c_inversion_list/**/*", format = "sdist" },
     ]
 
 [tool.poetry.build]
@@ -83,4 +83,4 @@
     sphinx-rtd-theme = "^1.2.0"
 
 [tool.mypy]
-exclude = ["finite-set/c-inversion-list"]
+exclude = ["finite_set/c-inversion_list"]
