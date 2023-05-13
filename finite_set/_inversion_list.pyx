@@ -71,8 +71,7 @@ class IntegerSet(AbstractSet[int]):
                                   
     def ranges(self) -> Iterator[range]:
         return iter(self._set.ranges())
-                       
-                                  
+                      
     def __eq__(self, other: object) -> bool:
          return fi.inversion_list_equals(self._set, self._other)
                                   
@@ -98,19 +97,19 @@ class IntegerSet(AbstractSet[int]):
           return IntergerSet(IntergerSet(fi.inversion_list_intersection(self._set, self._other)))
                                   
     def intersection(self, *others: Iterator[int]) -> "IntegerSet":
-          finite_set.IntergerSet _iset = self._set
+          _iset = self._set
           for i in others:
-                iset = IntegerSet(fi.inversion_list_intersection(self._iset, i))
-          return self._iset
+                iset = IntegerSet(fi.inversion_list_intersection(_iset, i))
+          return IntegerSet(_iset)
                                   
     def __or__(self, other: "IntegerSet") -> "IntegerSet":
           return IntergerSet(IntergerSet(fi.inversion_list_union(self._set, self._other)))
                              
     def union(self, *others: Iterator[int]) -> "IntegerSet":
-          IntergerSet _iset = self._set
+          _iset = self._set
           for i in others:
-                iset = IntegerSet(fi.inversion_list_union(self._iset, i))
-          return self._iset
+                iset = IntegerSet(fi.inversion_list_union(_iset, i._set))
+          return IntegerSet(_iset)
                                   
     def __sub__(self, other: "IntegerSet") -> "IntegerSet":
           return IntergerSet(IntergerSet(fi.inversion_list_difference(self._set, self._other)))
