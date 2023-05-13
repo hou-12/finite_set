@@ -4,7 +4,19 @@
 
 cimport finite_set.c_inversion_list
 
+cdef _finish():
+    finite_set.c_inversion_list.inversion_list_finish()
+
+cdef _init():
+    finite_set.c_inversion_list.inversion_list_init()
+    import atexit
+    atexit.register(_finish)
+
+_init()
+
+
 class IntegerSet(AbstractSet[int]):
+    cdef finite_set.c_inversion_list.InversionList *_set
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
@@ -25,95 +37,80 @@ class IntegerSet(AbstractSet[int]):
         else:
             return cls()
         
-    def __repr__(self) -> str: 
-        return f"IntegerSet({list(self})"
+    def __repr__(self) -> str:
+        return finite_set.c_inversion_list.inversion_list_to_string(self._set)
                                   
     def __hash__(self) -> int: 
         return hash(tuple(self._set.intervals()))
                                   
     def __contains__(self, item: object) -> bool:
-         return self._set.contains(item)
+         return finite_set.c_inversion_list.inversion_list_member(item)
                                   
     def __len__(self) -> int:
-         return self._set.lenght()
+         return finite_set.c_inversion_list.inversion_list_capacity
                                   
     def __iter__(self) -> Iterator[int]: 
-         return iter(self._set)
+        res = []
+        finite_set.c_inversion_list.IteratorList *iterator = finite_set.c_inversion_list.list_iterator_create(self._set);
+        while (finite_set.c_inversion_list.inversion_list_iterator_valid(iterator)):
+            res.append(finite_set.c_inversion_list.inversion_list_iterator__get(iterator))
+            iterator = finite_set.c_inversion_list.inversion_list_iterator_next(iterator)
+         return res
                                   
     def intervals(self) -> Iterator[Tuple[int, int]]: 
-         return iter(self._set.intervals())
+         res = []
+        finite_set.c_inversion_list.IteratorCoupleList *iterator = finite_set.c_inversion_list.list_couple_iterator_create(self._set);
+        while (finite_set.c_inversion_list.inversion_list_couple_iterator_valid(iterator)):
+            res.append((finite_set.c_inversion_list.inversion_list_couple_iterator_inf(iterator), finite_set.c_inversion_list.inversion_list_couple_iterator_sup(iterator))
+            iterator = finite_set.c_inversion_list.inversion_list_couple_iterator_next(iterator)
+         return res
+                                  
     def ranges(self) -> Iterator[range]:
          return iter(self._set.ranges())
+                                  
     def __eq__(self, other: object) -> bool:
-         if not isinstanceof(other, IntergerSet):
-             return NotImplemented
-         return self._set == other._set
+         return finite_set.c_inversion_list.inversion_list_equals(self._set, self._other)
                                   
     def __ne__(self, other: object) -> bool:
-         if not isinstanceof(other, IntergerSet):
-             return NotImplemented
-         return self._set != other._set
+         return finite_set.c_inversion_list.inversion_list_not_equals(self._set, self._other)
                                   
     def __lt__(self, other: "IntegerSet") -> bool:
-         return self._set < other._set
+          return finite_set.c_inversion_list.inversion_list_less(self._set, self._other)
                                   
     def __le__(self, other: "IntegerSet") -> bool:
-         return self._set <= other._set
+          return finite_set.c_inversion_list.inversion_list_less_equals(self._set, self._other)
                                   
     def __gt__(self, other: "IntegerSet") -> bool:
-         return self._set > other._set
+         return finite_set.c_inversion_list.inversion_list_greater(self._set, self._other)
                                   
     def __ge__(self, other: "IntegerSet") -> bool:
-         return self._set >= other._set
+         return finite_set.c_inversion_list.greater_equals(self._set, self._other)
                                   
     def isdisjoint(self, other: Iterable[int]) -> bool:
-         return self._set.isdisjoint(other)
+         return finite_set.c_inversion_list.disjoint(self._set, self._other)
                                   
     def __and__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(self._set.intersection(other._set))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_intersection(self._other, other._set)))
                                   
     def intersection(self, *others: Iterator[int]) -> "IntegerSet":
-          setList = [self._set] + [set.InversionList(o) for o in other]
-          return IntergerSet(self._set.intersection(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_intersection(self._other, other._set)))
                                   
     def __or__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(self._set.union(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_union(self._other, other._set)))
                              
     def union(self, *others: Iterator[int]) -> "IntegerSet":
-          setList = [self._set] + [set.InversionList(o) for o in other]
-          return IntergerSet(self._set.union(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_union(self._other, other._set)))
                                   
     def __sub__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(self._set.difference(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_difference(self._other, other._set)))
                                   
     def difference(self, *others: Iterator[int]) -> "IntegerSet":
-          setList = [self._set] + [set.InversionList(o) for o in other]
-          return IntergerSet(self._set.difference(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_difference(self._other, other._set)))
                                   
     def __xor__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(self._set.symetric_difference(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_symetric_difference(self._other, other._set)))
                                   
     def symmetric_difference(self, other: Iterator[int]) -> "IntegerSet":
-          setList = [self._set] + [set.InversionList(o) for o in other]
-          return IntergerSet(self._set.symetric_difference(*setList))
+          return IntergerSet(IntergerSet(finite_set.c_inversion_list.inversion_list_symetric_difference(self._other, other._set)))
                                   
-    def intervals(self) -> Iterator[Tuple[int, int]]:
-           result = []
-            for i in range(self.set):
-                if self.contains(i):
-                    if not result:
-                        result.append((i, i))
-                    else:
-                        start, end = result[-1]
-                        if i == end + 1:
-                            result[-1] = (start, i)
-                        else:
-                            result.append((i, i))
-                else:
-                    if result and i == result[-1][1] + 1:
-                        result[-1] = (result[-1][0], i - 1)
-            return iter(result)
-                                  
-    def ranges(self) -> Iterator[range]:  
-            return iter([range(start, end+1) for start, end in self.intervals])
    
