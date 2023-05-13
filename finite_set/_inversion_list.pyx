@@ -53,7 +53,7 @@ class IntegerSet(AbstractSet[int]):
         res = []
         finite_set.c_inversion_list.IteratorList *iterator = finite_set.c_inversion_list.list_iterator_create(self._set);
         while (finite_set.c_inversion_list.inversion_list_iterator_valid(iterator)):
-            res.append(finite_set.c_inversion_list.inversion_list_iterator__get(iterator))
+            res.append(finite_set.c_inversion_list.inversion_list_iterator_get(iterator))
             iterator = finite_set.c_inversion_list.inversion_list_iterator_next(iterator)
         return res
                                   
