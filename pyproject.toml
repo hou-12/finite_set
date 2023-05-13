@@ -7,25 +7,25 @@
     build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-    name = "py-arithmetic"
+    name = "py-inversion-list"
     version = "0.1.0"
-    description = "A sample cython wrapper"
-    authors = ["Christophe Demko <chdemko@gmail.com>"]
-    license = "BSD-3-Clause"
+    description = "inversion list project"
+    authors = ["Groupe H"]
+    license = ""
     readme = "README.rst"
-    packages = [{ include = "arithmetic" }]
+    packages = [{ include = "finite-set" }]
     exclude = [
-        "arithmetic/**/*.so",
-        "arithmetic/**/*.pxd",
-        "arithmetic/**/*.c",
-        "arithmetic/**/*.pyx",
-        "arithmetic/c-arithmetic",
+        "inversion-list/**/*.so",
+        "inversion-list/**/*.pxd",
+        "inversion-list/**/*.c",
+        "inversion-list/**/*.pyx",
+        "finite-set/c-inversion-list",
     ]
     include = [
-        { path = "arithmetic/**/*.so", format = "wheel" },
-        { path = "arithmetic/**/*.pxd", format = "sdist" },
-        { path = "arithmetic/**/*.pyx", format = "sdist" },
-        { path = "arithmetic/c-arithmetic/**/*", format = "sdist" },
+        { path = "inversion-list/**/*.so", format = "wheel" },
+        { path = "inversion-list/**/*.pxd", format = "sdist" },
+        { path = "inversion-list/**/*.pyx", format = "sdist" },
+        { path = "finite-set/c-inversion-list/**/*", format = "sdist" },
     ]
 
 [tool.poetry.build]
@@ -83,4 +83,4 @@
     sphinx-rtd-theme = "^1.2.0"
 
 [tool.mypy]
-exclude = ["arithmetic/c-arithmetic"]
+exclude = ["finite-set/c-inversion-list"]
