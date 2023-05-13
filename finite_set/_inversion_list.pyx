@@ -55,18 +55,18 @@ class IntegerSet(AbstractSet[int]):
         while (finite_set.c_inversion_list.inversion_list_iterator_valid(iterator)):
             res.append(finite_set.c_inversion_list.inversion_list_iterator__get(iterator))
             iterator = finite_set.c_inversion_list.inversion_list_iterator_next(iterator)
-         return res
+        return res
                                   
     def intervals(self) -> Iterator[Tuple[int, int]]: 
-         res = []
+        res = []
         finite_set.c_inversion_list.IteratorCoupleList *iterator = finite_set.c_inversion_list.list_couple_iterator_create(self._set);
         while (finite_set.c_inversion_list.inversion_list_couple_iterator_valid(iterator)):
             res.append((finite_set.c_inversion_list.inversion_list_couple_iterator_inf(iterator), finite_set.c_inversion_list.inversion_list_couple_iterator_sup(iterator))
             iterator = finite_set.c_inversion_list.inversion_list_couple_iterator_next(iterator)
-         return res
+        return res
                                   
     def ranges(self) -> Iterator[range]:
-         return iter(self._set.ranges())
+                       return iter(self._set.ranges())
                                   
     def __eq__(self, other: object) -> bool:
          return finite_set.c_inversion_list.inversion_list_equals(self._set, self._other)
