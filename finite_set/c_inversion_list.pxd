@@ -9,9 +9,9 @@ cdef extern from "inversion-list.h":
     ctypedef struct InversionListCoupleIterator:
         pass
 
-    bint inversion_list_init(void)
+    bint inversion_list_init()
 
-    bint inversion_list_finish(void)
+    bint inversion_list_finish()
 
     InversionList *inversion_list_create(unsigned int capacity,
                                                 size_t count,
