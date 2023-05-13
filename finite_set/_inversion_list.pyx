@@ -95,25 +95,37 @@ class IntegerSet(AbstractSet[int]):
          return fi.disjoint(self._set, self._other)
                                   
     def __and__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_intersection(self._other, other._set)))
+          return IntergerSet(IntergerSet(fi.inversion_list_intersection(self._set, self._other)))
                                   
     def intersection(self, *others: Iterator[int]) -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_intersection(self._other, other._set)))
+          IntergerSet iset = self._set
+          for i in others:
+                iset = IntegerSet(fi.inversion_list_intersection(iset, i))
+          return iset
                                   
     def __or__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_union(self._other, other._set)))
+          return IntergerSet(IntergerSet(fi.inversion_list_union(self._set, self._other)))
                              
     def union(self, *others: Iterator[int]) -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_union(self._other, other._set)))
+          IntergerSet iset = self._set
+          for i in others:
+                iset = IntegerSet(fi.inversion_list_union(iset, i))
+          return iset
                                   
     def __sub__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_difference(self._other, other._set)))
+          return IntergerSet(IntergerSet(fi.inversion_list_difference(self._set, self._other)))
                                   
     def difference(self, *others: Iterator[int]) -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_difference(self._other, other._set)))
+          IntergerSet iset = self._set
+          for i in others:
+                iset = IntegerSet(fi.inversion_list_difference(iset, i))
+          return iset
                                   
     def __xor__(self, other: "IntegerSet") -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_symetric_difference(self._other, other._set)))
+          return IntergerSet(IntergerSet(fi.inversion_list_symetric_difference(self._set, self._other)))
                                   
     def symmetric_difference(self, other: Iterator[int]) -> "IntegerSet":
-          return IntergerSet(IntergerSet(fi.inversion_list_symetric_difference(self._other, other._set)))
+          IntergerSet iset = self._set
+          for i in others:
+                iset = IntegerSet(fi.inversion_list_symetric_difference(iset, i))
+          return iset
