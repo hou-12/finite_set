@@ -4,9 +4,9 @@
 from typing import Optional, Iterable, Tuple, Iterator
 from collections.abc import AbstractSet
 
-import finite_set.inversion_list as fi
+import finite_set.c_inversion_list as fi
 
-cimport finite_set.inversion_list
+cimport finite_set.c_inversion_list
 
 cdef _finish():
     fi.inversion_list_finish()
