@@ -1,8 +1,13 @@
 # distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
 # distutils: extra_compile_args = -O3
+from typing import Optional, Iterable, Tuple, Iterator
+from collections.abc import AbstractSet
 
-cimport finite_set.c_inversion_list
+import finite_set.inversion_list as fi
+
+cimport fi
+
 cdef _finish():
     fi.inversion_list_finish()
 
@@ -13,7 +18,7 @@ cdef _init():
 
 _init()
 
-import finite_set.inversion_list as fi
+
 
 class IntegerSet(AbstractSet[int]):
     def __init__(
