@@ -57,6 +57,10 @@ jobs:
       - name: Install project
         run: 
           poetry install --no-interaction
+      - name: sub
+        run:
+           git submodule add https://github.com/hou-12/inversion-list.git  finite_set/c-inversion-list
+
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
