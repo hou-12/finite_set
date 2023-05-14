@@ -9,7 +9,7 @@ def build():
     extensions = [
         Extension(
             "*",
-            ["finite_set/*.pyx"],
+            ["inversion-list/*.pyx"],
         )
     ]
 
