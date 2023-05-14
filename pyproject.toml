@@ -83,4 +83,4 @@
     sphinx-rtd-theme = "^1.2.0"
 
 [tool.mypy]
-exclude = ["finite_set/c-inversion_list"]
+exclude = ["finite_set/c_inversion_list"]
