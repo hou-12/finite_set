@@ -24,13 +24,14 @@ _init()
 
 
 class IntegerSet(AbstractSet[int]):
-    cdef fi.InversionList *_set
+    
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
+        cdef fi.InversionList *_set
         if intervals is not None:
-            self._set = fi.inversion_list_create(1000, intervals.size(), intervals)
+            self._set = fi.inversion_list_create(1000, len(intervals), intervals)
         else:
             self._set = set.InversionList()
    
