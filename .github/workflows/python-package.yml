@@ -50,13 +50,14 @@ jobs:
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run:
-          git submodule update --init --recursive
           poetry install --no-interaction --no-root
       #----------------------------------------------
       # install your root project, if required
       #----------------------------------------------
       - name: Install project
-        run: poetry install --no-interaction
+        run: 
+          git submodule update --init --recursive
+          poetry install --no-interaction
 
       #----------------------------------------------
       #              run test suite
