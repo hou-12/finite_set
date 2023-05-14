@@ -134,3 +134,4 @@ class IntegerSet(AbstractSet[int]):
           for i in other:
                 iset = IntegerSet(fi.inversion_list_symetric_difference(_iset, i._set))
           return IntegerSet(_iset)
+"""
