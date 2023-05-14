@@ -31,7 +31,8 @@ class IntegerSet(AbstractSet[int]):
     ) -> None: 
         cdef fi.InversionList *_set
         if intervals is not None:
-            self._set = fi.inversion_list_create(1000, len(intervals), intervals)
+            _set = fi.inversion_list_create(1000, len(intervals), intervals)
+            self._set = _set 
         else:
             self._set = set.InversionList()
    
