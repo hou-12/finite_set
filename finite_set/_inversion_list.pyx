@@ -30,7 +30,7 @@ class IntegerSet(AbstractSet[int]):
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
         if intervals is not None:
-            self._set = set.InversionList(intervals)
+            self._set = fi.inversion_lisit_create(1000, intervals.size(), intervals)
         else:
             self._set = set.InversionList()
    
