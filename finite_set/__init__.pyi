@@ -1,5 +1,5 @@
 from typing import Optional, Iterable, Tuple, Iterator
-from collections.abc import AbstractSet
+
 
 class IntegerSet(AbstractSet[int]):
   def __init__(
