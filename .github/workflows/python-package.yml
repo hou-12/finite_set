@@ -55,11 +55,7 @@ jobs:
       #----------------------------------------------
       - name: Install project
         run: poetry install --no-interaction
-        
-      - name: Submodul
-        run: 
-             git submodule init
-             git submodule update
+
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
