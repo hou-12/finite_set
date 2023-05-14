@@ -50,7 +50,7 @@ class IntegerSet(AbstractSet[int]):
         return hash(tuple(self._set.intervals()))
                                   
     def __contains__(self, item: object) -> bool:
-         return fi.inversion_list_member(IntegerSet(self._set)), item)
+         return fi.inversion_list_member(IntegerSet(self._set), item)
                                   
     def __len__(self) -> int:
          return fi.inversion_list_support(IntegerSet(self._set))
