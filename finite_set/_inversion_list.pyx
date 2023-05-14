@@ -6,7 +6,7 @@ from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
 
 
 
-import finite_set.c_inversion_list as fi
+cimport finite_set.c_inversion_list as fi
 
 cimport finite_set.c_inversion_list
 
