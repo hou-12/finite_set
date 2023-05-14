@@ -30,7 +30,7 @@ class IntegerSet(AbstractSet[int]):
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
         if intervals is not None:
-            self._set = fi.inversion_lisit_create(1000, intervals.size(), intervals)
+            self._set = fi.inversion_list_create(1000, intervals.size(), intervals)
         else:
             self._set = set.InversionList()
    
@@ -51,7 +51,7 @@ class IntegerSet(AbstractSet[int]):
     
     def __hash__(self) -> int: 
         return hash(tuple(self._set.intervals()))
-                                  
+         """                         
     def __contains__(self, item: object) -> bool:
          return fi.inversion_list_member(IntegerSet(self._set), item)
                                   
