@@ -51,7 +51,8 @@ class IntegerSet(AbstractSet[int]):
     
     def __hash__(self) -> int: 
         return hash(tuple(self._set.intervals()))
-         """                         
+         
+    """                         
     def __contains__(self, item: object) -> bool:
          return fi.inversion_list_member(IntegerSet(self._set), item)
                                   
