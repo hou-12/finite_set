@@ -46,7 +46,8 @@ class IntegerSet(AbstractSet[int]):
             return cls()
         
     def __repr__(self) -> str:
-        return fi.inversion_list_to_string(IntegerSet(fi.InversionList(self._set))).decode("UTF-8")
+        return "gg"
+        #return fi.inversion_list_to_string(fi.InversionList(self._set)).decode("UTF-8")
     
     def __hash__(self) -> int: 
         return hash(tuple(self._set.intervals()))
@@ -67,7 +68,7 @@ class IntegerSet(AbstractSet[int]):
                                   
     def intervals(self) -> Iterator[Tuple[int, int]]: 
         res = []
-        _iterator = fi.list_couple_iterator_create(self._set);
+        _iterator = fi.inversion_list_couple_iterator_create(self._set);
         while (fi.inversion_list_couple_iterator_valid(self._iterator)):
             res.append((fi.inversion_list_couple_iterator_inf(self._iterator), fi.inversion_list_couple_iterator_sup(self._iterator)))
             self._ = fi.inversion_list_couple_iterator_next(self._iterator)
