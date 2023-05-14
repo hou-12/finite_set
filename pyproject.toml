@@ -19,13 +19,13 @@
         "inversion_list/**/*.pxd",
         "inversion_list/**/*.c",
         "inversion_list/**/*.pyx",
-        "finite_set/c_inversion_list",
+        "finite_set/c-inversion-list",
     ]
     include = [
         { path = "inversion_list/**/*.so", format = "wheel" },
         { path = "inversion_list/**/*.pxd", format = "sdist" },
         { path = "inversion_list/**/*.pyx", format = "sdist" },
-        { path = "finite_set/c_inversion_list/**/*", format = "sdist" },
+        { path = "finite_set/c-inversion-list/**/*", format = "sdist" },
     ]
 
 [tool.poetry.build]
@@ -83,4 +83,4 @@
     sphinx-rtd-theme = "^1.2.0"
 
 [tool.mypy]
-exclude = ["finite_set/c_inversion_list"]
+exclude = ["finite_set/c-inversion-list"]
