@@ -23,7 +23,7 @@ _init()
 
 
 
-class IntegerSet(AbstractSet[int]):
+cdef class IntegerSet(AbstractSet[int]):
     cdef fi.InversionList *_set
     def __init__(
     self,
