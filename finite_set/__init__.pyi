@@ -1,3 +1,4 @@
+from collections.abc import AbstractSet
 from typing import Optional, Iterable, Tuple, Iterator
 
 
