@@ -57,8 +57,6 @@ jobs:
       - name: Install project
         run: 
           poetry install --no-interaction
-          git submodule update --init --recursive
-
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
