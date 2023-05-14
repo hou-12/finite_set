@@ -1,4 +1,4 @@
-from typing import Optional, Iterable, Tuple, Iterator
+from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
 
 class IntegerSet(AbstractSet[int]):
   def __init__(
