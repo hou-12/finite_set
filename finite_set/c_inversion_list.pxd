@@ -1,4 +1,4 @@
-cdef extern from "inversion-list.c":
+cdef extern from "inversion-list.h":
 
     ctypedef struct InversionList:
         pass
@@ -8,7 +8,7 @@ cdef extern from "inversion-list.c":
 
     ctypedef struct InversionListCoupleIterator:
         pass
-
+    
     bint inversion_list_init()
 
     bint inversion_list_finish()
