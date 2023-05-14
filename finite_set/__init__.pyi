@@ -1,7 +1,3 @@
-from collections.abc import AbstractSet
-from typing import Optional, Iterable, Tuple, Iterator
-
-
 class IntegerSet(AbstractSet[int]):
   def __init__(
   self,
