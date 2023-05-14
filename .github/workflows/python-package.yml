@@ -50,7 +50,10 @@ jobs:
       - name: sub
         run:
            git submodule add https://github.com/hou-12/inversion-list.git  finite_set/c-inversion-list
-           
+           pip install collection
+     
+     
+         
            
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
