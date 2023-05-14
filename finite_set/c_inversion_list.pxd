@@ -1,4 +1,4 @@
-cdef extern from "inversion-list.h":
+cdef extern from "./inversion-list/inversion-list.h":
 
     ctypedef struct InversionList:
         pass
