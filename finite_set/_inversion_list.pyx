@@ -53,11 +53,11 @@ class IntegerSet(AbstractSet[int]):
          return fi.inversion_list_member(item)
                                   
     def __len__(self) -> int:
-         return fi.inversion_list_capacity
+         return fi.inversion_list_support(self._set)
                                   
     def __iter__(self) -> Iterator[int]: 
         res = []
-        _iterator = fi.list_iterator_create(self._set);
+        _iterator = fi.inversion_list_iterator_create(self._set);
         while (fi.inversion_list_iterator_valid(self._iterator)):
             res.append(fi.inversion_list_iterator_get(self._iterator))
             iterator = fi.inversion_list_iterator_next(self._iterator)
