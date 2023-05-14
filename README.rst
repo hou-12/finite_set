@@ -1,4 +1,4 @@
-Install the **finite-set** package
+Install the **finite_set** package
 =====================================
 
 |cmake| |Documentation Status|
@@ -6,12 +6,12 @@ Install the **finite-set** package
 Installation
 ------------
 
-Install *finite-set* using the bash commands:
+Install *finite_set* using the bash commands:
 
 .. code-block:: shell-session
 
-    $ git clone https://github.com/hou-12/finite-set.git
-    $ cd finite-set
+    $ git clone https://github.com/hou-12/finite_set.git
+    $ cd finite_set
     $ git submodule update --init --recursive
     $ poetry install --with docs
 
@@ -37,7 +37,7 @@ Build the documentation using the bash commands:
 Testing
 -------
 
-Test *finite-set* using the bash commands:
+Test *finite_set* using the bash commands:
 
 .. code-block:: shell-session
 
@@ -46,7 +46,7 @@ Test *finite-set* using the bash commands:
     $ poetry run tox -e linter
 
 
-.. |cmake| image:: https://github.com/hou-12/finite-set/actions/workflows/python-package.yml/badge.svg
-   :target: https://github.com/hou-12/finite-set/actions
-.. |Documentation Status| image:: https://img.shields.io/readthedocs/finite-set.svg
-   :target: http://finite-set.readthedocs.io/en/latest/?badge=latest
+.. |cmake| image:: https://github.com/hou-12/finite_set/actions/workflows/python-package.yml/badge.svg
+   :target: https://github.com/hou-12/finite_set/actions
+.. |Documentation Status| image:: https://img.shields.io/readthedocs/finite_set.svg
+   :target: http://finite_set.readthedocs.io/en/latest/?badge=latest
