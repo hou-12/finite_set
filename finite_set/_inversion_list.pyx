@@ -3,7 +3,7 @@
 # distutils: extra_compile_args = -O3
 #from collections.abc import AbstractSet
 from typing import Optional, Iterable, Tuple, Iterator
-import collection.abc
+import collection.abc as a
 
 
 import finite_set.c_inversion_list as fi
@@ -22,7 +22,7 @@ _init()
 
 
 
-class IntegerSet(abc.AbstractSet[int]):
+class IntegerSet(a.AbstractSet[int]):
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
