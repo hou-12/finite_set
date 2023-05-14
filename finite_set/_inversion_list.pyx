@@ -22,7 +22,7 @@ _init()
 
 
 
-cdef fi.InversionList *_set
+
 class IntegerSet(AbstractSet[int]):
     
     def __init__(
@@ -46,7 +46,7 @@ class IntegerSet(AbstractSet[int]):
             return cls()
         
     def __repr__(self) -> str:
-        return fi.inversion_list_to_string(fi.InversionList(self._set)).decode("UTF-8")
+        return fi.inversion_list_to_string(IntegerSet(fi.InversionList(self._set)).decode("UTF-8")
                                   
     def __hash__(self) -> int: 
         return hash(tuple(self._set.intervals()))
