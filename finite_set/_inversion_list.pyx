@@ -3,6 +3,7 @@
 # distutils: extra_compile_args = -O3
 
 from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
+from finite_set._inversion_list import IntegerSet
 from libc.stdlib cimport malloc, free
 cimport finite_set.c_inversion_list as fi
 
