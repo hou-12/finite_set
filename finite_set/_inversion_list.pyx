@@ -27,9 +27,24 @@ class IntegerSet(AbstractSet[int]):
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
         cdef fi.InversionList *_c_set
-        
         if intervals is not None:
-            _c_set = fi.inversion_list_create(20, 400000, Iterable)
+            cdef unsigned int *values
+            cdef unsigned int values_c[]
+            cdef int size = len(intervals)
+            values = <unsigned int *>malloc(size * sizeof(unsigned int))
+            if not values:
+                raise MemoryError()
+
+            # Conversion de l'objet Iterable en tableau de valeurs unsigned int
+            for i, (start, end) in enumerate(intervals):
+                values[i] = start
+
+            # Appel à la fonction inversion_list_create
+            self._c_set = inversion_list_create(20, size, values)
+
+            free(values)  # Libération de la mémoire allouée pour le tableau
+        else:
+            self._c_set = NULL
         
    
     @classmethod
