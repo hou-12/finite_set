@@ -27,10 +27,12 @@ class IntegerSet(AbstractSet[int]):
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
         cdef fi.InversionList *_c_set
+        cdef unsigned int *values
+        cdef unsigned int values_c[]
+        cdef int size = len(intervals)
+        
         if intervals is not None:
-            cdef unsigned int *values
-            cdef unsigned int values_c[]
-            cdef int size = len(intervals)
+            
             values = <unsigned int *>malloc(size * sizeof(unsigned int))
             if not values:
                 raise MemoryError()
