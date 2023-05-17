@@ -1,12 +1,10 @@
-# distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c 
+# distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
 # distutils: extra_compile_args = -O3
 
 from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
-
+from libc.stdlib cimport malloc, free
 cimport finite_set.c_inversion_list as fi
-
-cimport finite_set.c_inversion_list
 
 cdef _finish():
     fi.inversion_list_finish()
@@ -17,62 +15,53 @@ cdef _init():
     atexit.register(_finish)
 
 _init()
-cdef fi.InversionList *_set
+
+cdef fi.InversionList *_c_set
 
 class IntegerSet(AbstractSet[int]):
-    
-    
     def __init__(
-    self,
-    intervals: Optional[Iterable[Tuple[int, int]]] = None,
-    ) -> None: 
-        cdef fi.InversionList *_c_set
+            self,
+            intervals: Optional[Iterable[Tuple[int, int]]] = None,
+    ) -> None:
         cdef unsigned int *values
-        cdef unsigned int values_c[]
-        cdef unsigned int size = len(intervals)
+        cdef unsigned int size
         
         if intervals is not None:
-            
+            size = sum(end - start + 1 for start, end in intervals)
             values = <unsigned int *>malloc(size * sizeof(unsigned int))
             if not values:
                 raise MemoryError()
 
-            # Conversion de l'objet Iterable en tableau de valeurs unsigned int
-            for i, (start, end) in enumerate(intervals):
-                values[i] = start
+            idx = 0
+            for start, end in intervals:
+                for i in range(start, end + 1):
+                    values[idx] = i
+                    idx += 1
 
-            # Appel à la fonction inversion_list_create
-            self._c_set = fi.inversion_list_create(20, size, values)
-
-            free(values)  # Libération de la mémoire allouée pour le tableau
+            _c_set = fi.inversion_list_create(20, size, values)
+            free(values)
         else:
-            self._c_set = NULL
-        
-   
+            _c_set = NULL
+
     @classmethod
-    def from_iterable(
-    cls,
-    iterable: Optional[Iterable[int]] = None,
-    ) -> IntegerSet:
+    def from_iterable(cls, iterable: Optional[Iterable[int]] = None) -> IntegerSet:
         if iterable is not None:
             intervals = [(x, x) for x in iterable]
             return cls(intervals)
         else:
             return cls()
-    
+
     def __repr__(self) -> str:
-        return "gg"
-        #return fi.inversion_list_to_string(fi.InversionList(self._set)).decode("UTF-8")
+        return "IntegerSet()"
 
-    def __hash__(self) -> int: 
-        return hash(tuple(self._set.intervals()))
-
-    """                         
+    def __hash__(self) -> int:
+        return hash(tuple(self._c_set.intervals()))
+"""
     def __contains__(self, item: object) -> bool:
-         return fi.inversion_list_member(IntegerSet(self._set), item)
+        return fi.inversion_list_member(self._c_set, item)
 
     def __len__(self) -> int:
-         return fi.inversion_list_support(IntegerSet(self._set))
+        return fi.inversion_list_support(self._c_set)
 
     def __iter__(self) -> Iterator[int]: 
         res = []
