@@ -28,7 +28,7 @@ class IntegerSet(AbstractSet[int]):
             self._set = set.InversionList(intervals)
         else:
             self._set = set.InversionList()
-
+"""
     @classmethod
     def from_iterable(
     cls,
