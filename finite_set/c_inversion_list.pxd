@@ -1,8 +1,8 @@
 cdef extern from "inversion-list.h":
-
+"""
     ctypedef struct InversionList:
         pass
-
+"""
     ctypedef struct InversionListIterator:
         pass
 
