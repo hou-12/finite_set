@@ -1,5 +1,5 @@
 from unittest import TestCase
-import _finite_set._inversion_list
+import finite_set
 
 
 class InversionTestCase(TestCase):
