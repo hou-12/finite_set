@@ -1,5 +1,5 @@
 from unittest import TestCase
-from finite_set import IntegerSet
+from _inversion_list import IntegerSet
 
 class InversionTestCase(TestCase):
     def test_create(self):
