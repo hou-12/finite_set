@@ -18,7 +18,7 @@ cdef _init():
 
 _init()
 
-cdef class IntegerSet(AbstractSet[int]):
+class IntegerSet(AbstractSet[int]):
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
