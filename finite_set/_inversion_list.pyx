@@ -18,7 +18,7 @@ cdef _init():
 
 _init()
 cdef fi.InversionList *_set
-cdef unsigned int a[6] =  {1, 2, 3, 5, 7, 9}
+
 class IntegerSet(AbstractSet[int]):
     
     
@@ -28,7 +28,7 @@ class IntegerSet(AbstractSet[int]):
     ) -> None: 
         
         if intervals is not None:
-            self._set = fi.inversion_list_create(20, sizeof a / sizeof *a, a)
+            self._set = fi.inversion_list_create(20, 400000, {1,2,3,4,7} )
         else:
             self._set = fi.inversion_list_create(0, NULL, NULL)
    
