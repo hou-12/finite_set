@@ -27,10 +27,10 @@ class IntegerSet(AbstractSet[int]):
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
         cdef fi.InversionList *_c_set
+        cdef unsigned int a[] = {1,2,3,4,7}
         if intervals is not None:
-            _c_set = fi.inversion_list_create(20, 400000, {1,2,3,4,7} )
-        else:
-            self._c_set = null
+            _c_set = fi.inversion_list_create(20, 400000, a)
+        
    
     @classmethod
     def from_iterable(
