@@ -25,9 +25,9 @@ class IntegerSet(AbstractSet[int]):
     ) -> None: 
 
         if intervals is not None:
-            self._set = set.InversionList(intervals)
+            self._set = fi.InversionList(intervals)
         else:
-            self._set = set.InversionList()
+            self._set = fi.InversionList()
 
     @classmethod
     def from_iterable(
