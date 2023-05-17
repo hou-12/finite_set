@@ -29,7 +29,7 @@ class IntegerSet(AbstractSet[int]):
         cdef fi.InversionList *_c_set
         cdef unsigned int *values
         cdef unsigned int values_c[]
-        cdef int size = len(intervals)
+        cdef unsigned int size = len(intervals)
         
         if intervals is not None:
             
@@ -42,7 +42,7 @@ class IntegerSet(AbstractSet[int]):
                 values[i] = start
 
             # Appel à la fonction inversion_list_create
-            self._c_set = inversion_list_create(20, size, values)
+            self._c_set = fi.inversion_list_create(20, size, values)
 
             free(values)  # Libération de la mémoire allouée pour le tableau
         else:
