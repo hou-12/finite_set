@@ -30,7 +30,7 @@ class IntegerSet(AbstractSet[int]):
         if intervals is not None:
             self._set = fi.inversion_list_create(20, 400000, {1,2,3,4,7} )
         else:
-            self._set = fi.inversion_list_create(0, NULL, NULL)
+            self._set = NULL
    
     @classmethod
     def from_iterable(
