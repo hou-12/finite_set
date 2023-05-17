@@ -28,7 +28,7 @@ class IntegerSet(AbstractSet[int]):
     ) -> None: 
         cdef fi.InversionList *_c_set
         if intervals is not None:
-            self._c_set = fi.inversion_list_create(20, 400000, {1,2,3,4,7} )
+            _c_set = fi.inversion_list_create(20, 400000, {1,2,3,4,7} )
         else:
             self._c_set = null
    
