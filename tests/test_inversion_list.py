@@ -1,5 +1,6 @@
 from unittest import TestCase
 import finite_set
+from finite_set import IntegerSet
 
 
 class InversionTestCase(TestCase):
