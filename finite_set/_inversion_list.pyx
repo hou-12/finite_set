@@ -22,7 +22,7 @@ _init()
 cdef fi.InversionList *_c_set
 
 class IntegerSet(AbstractSet[int]):
-    cdef __init__(
+    def __init__(
             self,
             intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None:
