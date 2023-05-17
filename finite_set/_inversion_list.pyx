@@ -47,7 +47,7 @@ class IntegerSet(AbstractSet[int]):
             _c_set = NULL
 
     @classmethod
-    def from_iterable(cls, iterable: Optional[Iterable[int]] = None) -> IntegerSet:
+    def from_iterable(cls, iterable: Optional[Iterable[int]] = None) -> 'IntegerSet':
         if iterable is not None:
             intervals = [(x, x) for x in iterable]
             return cls(intervals)
