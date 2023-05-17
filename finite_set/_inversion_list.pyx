@@ -25,7 +25,7 @@ class IntegerSet(AbstractSet[int]):
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
-        cdef unsigned int a[] =  {1, 2, 3, 5, 7, 9}
+        cdef unsigned int a[6] =  {1, 2, 3, 5, 7, 9}
         if intervals is not None:
             self._set = fi.inversion_list_create(20, sizeof a / sizeof *a, a)
         else:
