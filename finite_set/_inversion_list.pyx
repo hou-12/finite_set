@@ -17,9 +17,9 @@ cdef _init():
     atexit.register(_finish)
 
 _init()
-
+cdef fi.InversionList *_set
 class IntegerSet(AbstractSet[int]):
-    cdef fi.InversionList *_set
+    
     
     def __init__(
     self,
