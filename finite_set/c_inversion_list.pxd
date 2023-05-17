@@ -1,8 +1,8 @@
 cdef extern from "inversion-list.h":
-"""
+
     ctypedef struct InversionList:
         pass
-"""
+    
     ctypedef struct InversionListIterator:
         pass
 
@@ -12,10 +12,10 @@ cdef extern from "inversion-list.h":
     bint inversion_list_init()
 
     bint inversion_list_finish()
-
+"""
     InversionList *inversion_list_create(unsigned int capacity,
                                                 size_t count,
-                                                const unsigned int *values)
+                                                const unsigned int *values)"""
 
     void inversion_list_destroy(InversionList *set)
 
