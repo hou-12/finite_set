@@ -29,17 +29,7 @@ class IntegerSet(AbstractSet[int]):
         else:
             self._set = fi.InversionList()
 
-    @classmethod
-    def from_iterable(
-    cls,
-    iterable: Optional[Iterable[int]] = None,
-    ) -> IntegerSet: 
-        if iterable is not None:
-            intervals = [(i, i) for i in iterable]
-            return cls(intervals)
-        else:
-            return cls()
-
+    
     def __repr__(self) -> str:
         return "gg"
         #return fi.inversion_list_to_string(fi.InversionList(self._set)).decode("UTF-8")
