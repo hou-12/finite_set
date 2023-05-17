@@ -39,7 +39,7 @@ class IntegerSet(AbstractSet[int]):
             return cls(intervals)
         else:
             return cls()
-
+"""
     def __repr__(self) -> str:
         return "gg"
         #return fi.inversion_list_to_string(fi.InversionList(self._set)).decode("UTF-8")
