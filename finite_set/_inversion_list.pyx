@@ -19,16 +19,28 @@ cdef _init():
 _init()
 
 cdef class IntegerSet(AbstractSet[int]):
+    cdef fi.InversionList *_set
+    
     def __init__(
     self,
     intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None: 
-
+        cdef unsinged int a[] =  {1, 2, 3, 5, 7, 9}
         if intervals is not None:
-            self._set = fi.InversionList(intervals)
+            self._set = fi.inversion_list_create(20, sizeof a / sizeof *a, a)
         else:
-            self._set = fi.InversionList()
-
+            self._set = fi.inversion_list_create(0, NULL, NULL)
+   
+    @classmethod
+    def from_iterable(
+    cls,
+    iterable: Optional[Iterable[int]] = None,
+    ) -> IntegerSet:
+        if iterable is not None:
+            intervals = [(x, x) for x in iterable]
+            return cls(intervals)
+        else:
+            return cls()
     
     def __repr__(self) -> str:
         return "gg"
