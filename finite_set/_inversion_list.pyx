@@ -26,19 +26,19 @@ class IntegerSet(AbstractSet[int]):
             self,
             intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None:
-        cdef unsigned int *values
+        #cdef unsigned int *values
         cdef unsigned int size
         
         if intervals is not None:
             size = sum(end - start + 1 for start, end in intervals)
-            values = <unsigned int *>malloc(size * sizeof(unsigned int))
+            values = []
             if not values:
                 raise MemoryError()
 
             idx = 0
             for start, end in intervals:
                 for i in range(start, end + 1):
-                    values[idx] = set.i
+                    values[idx] = i
                     idx += 1
 
             self._c_set = set.fi.inversion_list_create(20, size, values)
