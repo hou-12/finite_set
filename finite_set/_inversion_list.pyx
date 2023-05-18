@@ -1,6 +1,6 @@
 # distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c 
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
-# distutils: extra_compile_args = -O3
+# distutils: extra_compile_args = -O4
 
 from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
 
