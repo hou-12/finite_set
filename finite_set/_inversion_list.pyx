@@ -44,7 +44,7 @@ class IntegerSet(AbstractSet[int]):
             self._c_set = set.fi.inversion_list_create(20, size, values)
             #free(values)
         else:
-            self._c_set = NULL
+            self._c_set = set.NULL
 
     @classmethod
     def from_iterable(cls, iterable: Optional[Iterable[int]] = None) -> 'IntegerSet':
