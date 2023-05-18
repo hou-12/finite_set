@@ -1,4 +1,4 @@
-# distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c finite_set/c-inversion-list/src/inversion-list/inversion-list.h finite_set/c-inversion-list/src/inversion-list/inversion-list.inc
+# distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c 
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
 # distutils: extra_compile_args = -O3
 
