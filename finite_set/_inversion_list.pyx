@@ -38,7 +38,7 @@ class IntegerSet(AbstractSet[int]):
             idx = 0
             for start, end in intervals:
                 for i in range(start, end + 1):
-                    values[idx] = i
+                    values[idx] = set.i
                     idx += 1
 
             self._c_set = set.fi.inversion_list_create(20, size, values)
