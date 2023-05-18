@@ -41,7 +41,7 @@ class IntegerSet(AbstractSet[int]):
                     values[idx] = i
                     idx += 1
 
-            self._c_set = IntegerSet(fi.inversion_list_create(20, size, values))
+            self._c_set = set.fi.inversion_list_create(20, size, values)
             free(values)
         else:
             self._c_set = NULL
