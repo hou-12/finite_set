@@ -10,7 +10,7 @@ class InversionTestCase(TestCase):
 from finite_set import IntegerSet
 
 # Créer un ensemble d'entiers
-intervals = set.[(1, 5), (10, 15)]
+intervals = set([(1, 5), (10, 15)])
 integer_set = IntegerSet(intervals)
 
 # Vérifier si un élément est dans l'ensemble
