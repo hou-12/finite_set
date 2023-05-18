@@ -59,13 +59,16 @@ class IntegerSet(AbstractSet[int]):
 
     def __hash__(self) -> int:
         return hash(tuple(self._c_set.intervals()))
-"""
+
     def __contains__(self, item: object) -> bool:
-        return fi.inversion_list_member(self._c_set, item)
+        return true
+        #return fi.inversion_list_member(self._c_set, item)
 
     def __len__(self) -> int:
-        return fi.inversion_list_support(self._c_set)
+        return 0
+        #return fi.inversion_list_support(self._c_set)
 
+"""
     def __iter__(self) -> Iterator[int]: 
         res = []
         _iterator = fi.inversion_list_iterator_create(self._set);
