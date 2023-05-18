@@ -1,6 +1,6 @@
 # distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c 
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
-# distutils: extra_compile_args = -O4
+# distutils: extra_compile_args = -O3
 
 from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
 
@@ -61,7 +61,7 @@ class IntegerSet(AbstractSet[int]):
         return hash(tuple(self._c_set.intervals()))
 
     def __contains__(self, item: object) -> bool:
-        return true
+        return True
         #return fi.inversion_list_member(self._c_set, item)
 
     def __len__(self) -> int:
