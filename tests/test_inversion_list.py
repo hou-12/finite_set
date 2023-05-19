@@ -1,20 +1,21 @@
 from unittest import TestCase
 
-"""
+
 class InversionTestCase(TestCase):
     def test_create(self):
         _set = IntegerSet( [(1, 3), (5, 7)] )
-        repr(_set)
- """
+        self.assertEqual(repr(_set), "NULL")
+
+        _set = IntegerSet()
+        self.assertEqual(repr(_set), "NULL")
+ 
 
 from finite_set import IntegerSet
 
 # Créer un ensemble d'entiers
-intervals = set(1,2,3,5,6,8,9)
+intervals = [(1,2),(3,5),(6,9)]
 integer_set = IntegerSet(intervals)
 
-# Vérifier si un élément est dans l'ensemble
-print(0 in s) # True
-print(7 in s) # False
+
 
     
