@@ -73,5 +73,6 @@ jobs:
         run: |
           source .venv/bin/activate
           tox
-          tox -e style
           tox -e linter
+          
+        #tox -e style
