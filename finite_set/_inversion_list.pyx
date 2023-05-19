@@ -21,7 +21,7 @@ _init()
 
     
     
-cdef fi.InversionList *_c_set
+cdef static fi.InversionList *_c_set
 class IntegerSet:
 
     def __init__(
