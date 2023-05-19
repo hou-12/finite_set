@@ -12,6 +12,7 @@ Install *finite_set* using the bash commands:
 
     $ git clone https://github.com/hou-12/finite_set.git
     $ cd finite_set
+    $ git submodule add https://github.com/hou-12/inversion-list.git  finite_set/c-inversion-list
     $ git submodule update --init --recursive
     $ poetry install --with docs
 
