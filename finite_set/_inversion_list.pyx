@@ -1,6 +1,6 @@
 # distutils: sources = finite_set/c-inversion-list/src/inversion-list/inversion-list.c 
 # distutils: include_dirs = finite_set/c-inversion-list/src/inversion-list
-# distutils: extra_compile_args = -O3
+# distutils: extra_compile_args = -O4
 
 from typing import Optional, Iterable, Tuple, Iterator, AbstractSet
 
@@ -19,19 +19,23 @@ cdef _init():
 
 _init()
 
+    
+    
 cdef fi.InversionList *_c_set
+class IntegerSet:
 
-class IntegerSet(AbstractSet[int]):
     def __init__(
             self,
             intervals: Optional[Iterable[Tuple[int, int]]] = None,
     ) -> None:
-        #cdef unsigned int *values
+        cdef unsigned int *values
         cdef unsigned int size
+        #cdef fi.InversionList *_c_set
         
+
         if intervals is not None:
             size = sum(end - start + 1 for start, end in intervals)
-            values = []
+            values = <unsigned int *>malloc(size * sizeof(unsigned int))
             if not values:
                 raise MemoryError()
 
@@ -41,10 +45,11 @@ class IntegerSet(AbstractSet[int]):
                     values[idx] = i
                     idx += 1
 
-            self._c_set = set.fi.inversion_list_create(20, size, values)
-            #free(values)
+            _c_set = fi.inversion_list_create(20, size, values)
+            free(values)
         else:
-            self._c_set = set.NULL
+            _c_set = NULL
+        
 
     @classmethod
     def from_iterable(cls, iterable: Optional[Iterable[int]] = None) -> 'IntegerSet':
@@ -55,20 +60,20 @@ class IntegerSet(AbstractSet[int]):
             return cls()
 
     def __repr__(self) -> str:
-        return "IntegerSet()"
-
+        if _c_set == NULL:
+            return "NULL"
+        else:
+            return self.inversion_list_to_string(self._c_set).decode("utf-8")
+        
+"""
     def __hash__(self) -> int:
         return hash(tuple(self._c_set.intervals()))
-
     def __contains__(self, item: object) -> bool:
-        return True
-        #return fi.inversion_list_member(self._c_set, item)
+        return fi.inversion_list_member(self._c_set, item)
 
     def __len__(self) -> int:
-        return 0
-        #return fi.inversion_list_support(self._c_set)
+        return fi.inversion_list_support(self._c_set)
 
-"""
     def __iter__(self) -> Iterator[int]: 
         res = []
         _iterator = fi.inversion_list_iterator_create(self._set);
